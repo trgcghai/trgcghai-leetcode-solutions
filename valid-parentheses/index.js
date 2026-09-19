@@ -1,34 +1,35 @@
 function isValid(s) {
   let st = [];
 
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
-      st.push(s[i]);
+  s.split('').forEach((c) => {
+    if (c == "(" || c == "{" || c == "[") {
+      st.push(c);
     }
 
-    if (s[i] == ")") {
+    if (c == ")") {
       if (st[st.length - 1] == "(") {
         st.pop();
       } else {
-        st.push(s[i]);
+        st.push(c);
       }
     }
-    if (s[i] == "}") {
+
+    if (c == "}") {
       if (st[st.length - 1] == "{") {
         st.pop();
       } else {
-        st.push(s[i]);
+        st.push(c);
       }
     }
 
-    if (s[i] == "]") {
+    if (c == "]") {
       if (st[st.length - 1] == "[") {
         st.pop();
       } else {
-        st.push(s[i]);
+        st.push(c);
       }
     }
-  }
+  });
 
   return st.length == 0;
-};
+}
